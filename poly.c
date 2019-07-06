@@ -1,7 +1,5 @@
 #include<stdio.h>
-#include<string.h>
 #include<stdlib.h>
-#include<malloc.h>
 void add();
 void create(int,int);
 void IAE(int,int);
@@ -13,13 +11,10 @@ struct node
 }*poly1=NULL,*poly2=NULL,*res=NULL;
 int main()
 {
-    //printf("Hello world!");
     struct node *temp,*n;
-    printf("\nHello world!");
     poly1=(struct node*)malloc(sizeof(struct  node));
     poly1->coeff=2;
     poly1->pow=2;
-    printf("\n %dx^(%d)",poly1->coeff,poly1->pow);
     temp=poly1;
     n=malloc(sizeof(struct  node));
     n->coeff=5;
@@ -31,7 +26,6 @@ int main()
     n->pow=0;
     temp->next=n;
     n->next=NULL;
-    printf("\n %d  x^(%d)",temp->coeff,temp->pow);
     
     poly2=malloc(sizeof(struct  node));
     poly2->coeff=3;
@@ -43,7 +37,7 @@ int main()
     temp->next=n;
     n->next=NULL;
     add();
-    temp=poly1;
+    temp=res;
     while(temp!=NULL)
     {
         printf("\n %dx^(%d)",temp->coeff,temp->pow);
@@ -107,7 +101,7 @@ void add()
             else if(temp1->pow>temp2->pow)
             {
                 IAE(temp1->coeff,temp1->pow);
-                temp1=temp->next;
+                temp1=temp1->next;
             }
             else
             {
